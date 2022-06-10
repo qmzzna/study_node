@@ -1,13 +1,11 @@
 import exec from '../database/db'
 
 //添加user数据
-const add = (user: any) => {
+const add = (user:any) => {
   const sql = 'insert into user(login,password,age,isDelete) values(?,?,?,?)'
   const params = [user.login, user.password, user.age, user.isDelete]
   return exec(sql, params).then((insertUser: any) => {
-    return {
-      id: insertUser.insertId
-    }
+    return insertUser
   })
 }
 
