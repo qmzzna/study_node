@@ -3,7 +3,8 @@ import bodyParser from 'body-parser'
 //导入路由，接口
 import demoRouter from './routes/demo'
 
-var app = express();
+
+const app = express();
 
 app.use(express.json());
 app.use(express.urlencoded({
@@ -17,6 +18,8 @@ app.use(bodyParser.urlencoded({
 }));
 //配置新增的路由（接口），如此便可以在postman中发起请求
 app.use('/users', demoRouter)
+
+
 
 //监听端口
 app.listen(3000) //请求时的端口：localhost:3000
