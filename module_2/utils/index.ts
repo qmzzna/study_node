@@ -16,7 +16,7 @@ function validateSchema(schema:any) {
     });
     next()
 
-    // if (error.isJoi) {
+    // if (error) {
     //   res.status(400).json(errorResponse(error.details));
     // } else {
     //   next()

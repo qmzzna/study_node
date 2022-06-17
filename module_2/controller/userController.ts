@@ -10,15 +10,15 @@ const add = (user:any) => {
 }
 
 //查询user
-const query = () => {
-  const sql = "select * from user"
+const query = ():Promise<{isDelete:boolean}[]> => {
+  const sql = "select * from user WHERE isDelete LIKE 'FALSE' "
   return exec(sql).then(data => {
-    return data
+    return data as {isDelete:boolean}[]
   })
 }
 
 //根据id查询user
-const queryById = (id: any) => {
+const queryById = (id: string) => {
   const sql = "select * from user where id =?"
   const params = [id]
   return exec(sql, params).then(data => {
@@ -45,6 +45,8 @@ const del = (login: any) => {
     return {
       row: data.affectedRows
     }
+  }).catch(err=>{
+    return err
   })
 }
 

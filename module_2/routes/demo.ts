@@ -3,13 +3,15 @@ import {urlencodedParser,validateSchema} from '../utils/index';
 import userSchema from '../utils/userSchema';
 import user from '../controller/userController'
 
+
 const router = express.Router()
+
+
 
 //添加学生
 router.post('/add', validateSchema(userSchema), (req, res) => {
-  const result = user.add(req.body)
+  const result =  user.add(req.body)
   result.then(data => {
-    console.log('data', data);
     res.json({
       data
     })
@@ -17,13 +19,14 @@ router.post('/add', validateSchema(userSchema), (req, res) => {
 })
 
 //查询学生
-router.get('/query', (req, res ) => {
+router.get('/query', (req, res,next) => {
   const result = user.query();
-  result.then(data=> {
+  result.then((data)=> {
     res.json({
       data
+      // data:data.filter(item=>item.isDelete = true)
     })
-  })
+  }).catch(next)
 })
 
 //根据id查询学生
@@ -50,9 +53,10 @@ router.put('/update', urlencodedParser, (req, res) => {
 //删除学生
 router.delete("/delelte", (req, res) => {
   const result = user.del(req.query.login)
-  result.then(row => {
+  console.log('result',result);
+  result.then(() => {
     res.json({
-      row
+      message:`成功删除${req.query.login}`
     })
   })
 })

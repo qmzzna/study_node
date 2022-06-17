@@ -2,11 +2,12 @@ import express from 'express'
 import bodyParser from 'body-parser'
 //导入路由，接口
 import demoRouter from './routes/demo'
-
+import morgan from 'morgan'
 
 const app = express();
+app.use(morgan('combined'))
 
-app.use(express.json());
+app.use(express.json())
 app.use(express.urlencoded({
   extended: false
 }));
@@ -20,6 +21,25 @@ app.use(bodyParser.urlencoded({
 app.use('/users', demoRouter)
 
 
+// function error_handler_middleware(err:any,res:any){
+//   if(err){
+//     const{statusMessage,method} = err
+//     // console.log('111',statusMessage,statusCode,method,err);
+//     res.status(404).json({
+//       code: 404,
+//       method: `${method }`,
+//       message:`${statusMessage|| '服务器异常'}`
+//     })
+//   }else{
+
+//   }
+// }
+// app.use(error_handler_middleware)
+
+// 容错， 就算报错也不退出程序
+process.on('uncaughtException', function(err) {
+  console.error(' Caught exception: ' + err.stack);
+});
 
 //监听端口
 app.listen(3000) //请求时的端口：localhost:3000
