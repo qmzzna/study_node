@@ -1,5 +1,8 @@
 {
   "dependencies": {
-    "express-async-errors": "^3.1.1"
+    "cors": "^2.8.5",
+    "express-async-errors": "^3.1.1",
+    "express-jwt": "^6.1.1",
+    "jsonwebtoken": "^8.5.1"
   }
 }
