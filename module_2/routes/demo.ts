@@ -18,6 +18,7 @@ router.post('/add', validateSchema(userSchema), (req, res) => {
   })
 })
 
+
 //查询学生
 router.get('/query', (req, res,next) => {
   const result = user.query();

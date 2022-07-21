@@ -26,7 +26,9 @@
 		"build": "tsc -p tsconfig.json",
 		"build:watch": "tsc -w -p tsconfig.json",
 		"build:release": "npm run clean && tsc -p tsconfig.release.json",
-		"prettier": "prettier --config .prettierrc --write ."
+		"prettier": "prettier --config .prettierrc --write .",
+    "test":"jest",
+    "test:watch":"jest --watch"
 	},
 	"author": "Jakub Synowiec <jsynowiec@users.noreply.github.com>",
 	"license": "Apache-2.0",

@@ -4,7 +4,7 @@ import exec from '../database/db'
 const add = (user:any) => {
   const sql = 'insert into user(login,password,age,isDelete) values(?,?,?,?)'
   const params = [user.login, user.password, user.age, user.isDelete]
-  return exec(sql, params).then((insertUser: any) => {
+  return exec(sql, params).then((insertUser:any) => {
     return insertUser
   })
 }
